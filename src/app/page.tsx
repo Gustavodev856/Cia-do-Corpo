@@ -1,69 +1,101 @@
-import Image from "next/image";
+import ClubeParceria from "@/components/ClubeParceria";
+import Depoimentos from "@/components/Depoimentos";
+import Footer from "@/components/Footer";
+import HistoriaBeneficios from "@/components/HistoriaBeneficios";
+import UnidadesCarousel from "@/components/UnidadesCarousel";
+
+const modalidades = [
+  {
+    numero: "01",
+    titulo: "GINÁSTICA",
+    destaque: "COLETIVA",
+    descricao:
+      "Zumba, Pilates, Jump, Pump, Step, Funcional, HIIT e muito mais. Encontre a aula ideal para sua rotina.",
+    imagem: "/images/ginastica.png",
+    alt: "Pessoa praticando ginástica",
+  },
+  {
+    numero: "02",
+    titulo: "MUSCULAÇÃO",
+    destaque: "",
+    descricao:
+      "Desenvolva força e resistência com exercícios adaptados aos seus objetivos e à sua evolução.",
+    imagem: "/images/musculacao.png",
+    alt: "Pessoa treinando musculação com halteres",
+  },
+  {
+    numero: "03",
+    titulo: "ARTES",
+    destaque: "MARCIAIS",
+    descricao:
+      "Aulas de Muay Thai que combinam condicionamento físico, defesa pessoal e fortalecimento mental.",
+    imagem: "/images/artes-marciais.png",
+    alt: "Luvas de boxe para artes marciais",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-[#080808] px-5 py-16 text-white md:px-10 lg:py-24">
+      <section className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-orange-500">
+            Academia Cia do Corpo
           </p>
+
+          <h1 className="mt-4 text-4xl font-black uppercase leading-tight sm:text-5xl md:text-6xl">
+            Encontre sua força.
+            <span className="block text-orange-500">
+              Supere seus limites.
+            </span>
+          </h1>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          {modalidades.map((modalidade) => (
+            <article
+              key={modalidade.numero}
+              className="group overflow-hidden rounded-2xl border border-orange-500/40 bg-[#101010] transition duration-300 hover:-translate-y-2 hover:border-orange-500 hover:shadow-[0_15px_45px_rgba(249,115,22,0.12)]"
+            >
+              <div className="relative h-64 overflow-hidden bg-zinc-900">
+                <img
+                  src={modalidade.imagem}
+                  alt={modalidade.alt}
+                  className="h-full w-full object-contain transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#101010] to-transparent" />
+              </div>
+
+              <div className="p-7 pt-2 md:p-8 md:pt-2">
+                <p className="text-sm font-extrabold italic tracking-wider text-orange-500">
+                  MODALIDADE {modalidade.numero}
+                </p>
+
+                <h2 className="mt-4 text-3xl font-black italic leading-tight sm:text-4xl">
+                  {modalidade.titulo}
+                  {modalidade.destaque && (
+                    <span className="block text-orange-500">
+                      {modalidade.destaque}
+                    </span>
+                  )}
+                </h2>
+
+                <p className="mt-5 text-base leading-7 text-zinc-300">
+                  {modalidade.descricao}
+                </p>
+
+                <div className="mt-8 h-1.5 w-24 rounded-full bg-orange-500 transition-all duration-300 group-hover:w-36" />
+              </div>
+            </article>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <UnidadesCarousel/>
+      <Depoimentos/>
+      <HistoriaBeneficios/>
+      <ClubeParceria/>
+      <Footer/>
+    </main>
   );
 }
